@@ -1,0 +1,67 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/demo/demo",
+    "pages/asking/asking",
+    "pages/follow/follow",
+    "pages/my/my",
+    "components/switch/switch",
+    "pages/index/answer/answer",
+    "pages/index/answerdetail/answerdetail",
+    "pages/my/personal/personal",
+    "pages/my/perfect/perfect"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f7f7f7",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/img/home.png",
+        "selectedIconPath": "static/img/homes.png"
+      },
+      {
+        "pagePath": "pages/asking/asking",
+        "text": "问答",
+        "iconPath": "static/img/help.png",
+        "selectedIconPath": "static/img/helps.png"
+      },
+      {
+        "pagePath": "pages/follow/follow",
+        "text": "关注",
+        "iconPath": "static/img/guanzhu.png",
+        "selectedIconPath": "static/img/guanzhus.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "static/img/my.png",
+        "selectedIconPath": "static/img/mys.png"
+      }
+    ],
+    "color": "#000000",
+    "selectedColor": "#00BBBB",
+    "backgroundColor": "#f7f7f7"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "navigateToMiniProgramAppIdList": [
+    "wxe5f52902cf4de896"
+  ],
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

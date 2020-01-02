@@ -1,0 +1,146 @@
+/* pages/index/answer/answer.wxss */
+.answer-content{
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.answer-title{
+ width: 100%;
+ font-weight: bold;
+ font-size: 42rpx;
+}
+
+.answer-detail{
+ width: 100%;
+ font-size: 35rpx;
+ margin-top: 30rpx;
+}
+
+.answer-amount{
+ width: 100%;
+ font-size: 26rpx;
+  line-height: 70rpx;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.amount-text{
+  font-size: 22rpx;
+  flex: 4;
+}
+
+.answer-btn{
+ flex: 2;
+float: right;
+text-align: center;
+}
+.amount-btn{
+  font-size: 23rpx;
+  background: blue;
+  color: #ffffff;
+}
+.answer-section{
+  width: 100%;
+display: flex;
+flex-direction: row;
+margin: 0 auto;
+margin-top: 30rpx;
+}
+.answer-amount::after{
+  content: "";
+        clear: both;
+        display: block;
+        overflow: hidden;
+        font-size: 0;
+        height: 0;
+
+}
+.btn{
+  flex: 1;
+text-align: center;
+font-weight: bold;
+border: 2rpx solid #f7f7f7;
+font-size: 36rpx;
+line-height: 78rpx;
+height: 88rpx;
+}
+
+.answer-head{
+  padding: 20rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.line{
+  height: 24rpx;
+background: #f7f7f7;
+width: 100%;
+
+}
+.content-main{
+margin: 0 auto;
+}
+
+.content-head{
+  border-bottom: 2rpx solid #f7f7f7;
+  width: 100%;
+  padding: 20rpx;
+}
+
+.content-body{
+  padding: 20rpx;
+}
+.content-all{
+  font-size: 30rpx;
+line-height: 55rpx;
+height: 55rpx;
+margin-left: 26rpx;
+}
+.all{
+  font-weight: bold;
+}
+.avtor-img{
+  width: 80rpx;
+  height: 80rpx;
+  float: left;
+  border-radius: 50%;
+}
+.avtor-name{
+  float: left;
+  font-size: 35rpx;
+  line-height: 80rpx;
+  margin-left: 28rpx;
+}
+.avtor::after{
+  content: '';
+  height: 0;
+  display: block;
+  clear: both;
+}
+.content-item{
+  padding: 20rpx;
+  border-bottom: 2rpx solid #f7f7f7;
+}
+
+.content-answer{
+  font-size: 33rpx;
+  margin-top: 20rpx;
+}
+
+.content-bottem{
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+.bottem-text{
+  font-weight: bold;
+}
+
+.bottem-more{
+  font-size: 38rpx;
+margin: 0 auto;
+text-align: center;
+height: 84rpx;
+line-height: 94rpx;
+
+}

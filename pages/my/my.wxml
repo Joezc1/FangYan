@@ -1,0 +1,18 @@
+<!--pages/my/my.wxml-->
+<view class="my-content">
+  <view class="my-head">
+  <view class="head-one">
+    <image class="my-avtar" src="{{userInfo.avatarUrl}}"></image>
+    <view class="my-nicname">{{userInfo.nickName}}</view>
+    <view class="personal" bindtap="gotoPersonal">个人主页></view>
+  </view>
+  <view class="head-two">
+    <view class="head-card">
+      <view class="head-card-item" wx:for="{{itemArr}}" wx:key="index">{{item.name}}</view>
+    </view>
+  </view>
+  </view>
+  <view class="my-body">
+    <view class="garid" wx:for="{{gridArr}}" wx:key="index">{{item.name}}</view>
+  </view>
+</view>

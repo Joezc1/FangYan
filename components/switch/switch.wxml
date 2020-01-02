@@ -1,0 +1,5 @@
+<!--components/switch/switch.wxml-->
+<view class="switch-content" wx:for="{{title}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+  <view class="switch-item" style="color:index==0?{{selectedColor}}:''" data-type="index" bindtap="changeType">{{item.selectOne}}</view>
+  <view class="switch-item" style="color:index==1?{{selectedColor}}:''" data-type="index" bindtap="changeType">{{item.selectTwo}}</view>
+</view>

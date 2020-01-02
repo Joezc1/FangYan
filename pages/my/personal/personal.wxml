@@ -1,0 +1,19 @@
+<!--pages/my/personal/personal.wxml-->
+<view>
+  <view class="personal">
+
+  <view class="cell">
+    <view class="label">头像</view>
+    <image class="avtart" src="{{userInfo.avatarUrl}}"></image>
+  </view>
+  <view class="cell">
+    <view class="label">昵称</view>
+    <view class="nickname">{{userInfo.nickName}}</view>
+  </view>
+   <view class="cell">
+    <view class="label">地址</view>
+    <view class="address">{{userInfo.country}}{{userInfo.province}}{{userInfo.city}}</view>
+  </view>
+ 
+  </view>
+</view>

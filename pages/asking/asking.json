@@ -1,0 +1,9 @@
+{
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#f7f7f7",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "问答",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+    "disableScroll": true
+}

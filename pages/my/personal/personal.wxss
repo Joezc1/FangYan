@@ -1,0 +1,45 @@
+/* pages/my/personal/personal.wxss */
+.personal{
+  padding: 20rpx;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.label{
+  float: left;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.nickname{
+  float: right;
+  font-size: 36rpx;
+line-height: 109rpx;
+
+}
+.address{
+  float: right;
+  font-size: 36rpx;
+line-height: 109rpx;
+
+}
+.avtart{
+  float: right;
+  line-height: 100rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.cell{
+  padding: 0 10rpx 0 10rpx;
+  border-bottom: #f7f7f7 solid 2rpx;
+}
+.cell::after{
+  content:  '';
+  height: 0;
+  display: block;
+  clear: both;
+  overflow: hidden;
+  font-size: 0;
+}

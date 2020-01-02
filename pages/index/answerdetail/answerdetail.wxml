@@ -1,0 +1,6 @@
+<!--pages/index/answerdetail/answerdetail.wxml-->
+<view>
+  <view class="detail-head"></view>
+  <view classs="detail-content"></view>
+  <view class="detail-bottem"></view>
+</view>

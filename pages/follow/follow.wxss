@@ -1,0 +1,76 @@
+/* pages/follow/follow.wxss */
+.selected{
+  color: #ff9900;
+  border-bottom: 2rpx solid #ff9900;
+}
+.follow-head{
+  padding: 20rpx;
+}
+.head-item{
+  width: 70rpx;
+text-align: center;
+float: left;
+font-size: 32rpx;
+height: 60rpx;
+margin-left: 30rpx;
+}
+.user-item{
+  width: 100%;
+  height: 120rpx;
+  padding: 10rpx;
+  border-bottom: 2rpx solid #f7f7f7;
+}
+.user-avtar{
+  float: left;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.per{
+  float: left;
+  margin-left: 30rpx;
+}
+.pername{
+font-weight: bold;
+font-size: 36rpx;
+line-height: 58rpx;
+}
+
+
+.perdetail{
+  font-size: 30rpx;
+}
+.btn{
+  height: 60%;
+width: 175rpx;
+float: right;
+font-size: 30rpx;
+
+}
+
+
+.follow-body{
+  padding: 0 20rpx 20rpx 20rpx;
+margin-top: 60rpx;
+}
+.follow-body::after{
+  content: '';
+  height: 0;
+  overflow: hidden;
+  display: block;
+  clear: both;
+  font-size: 0;
+}
+
+.topic-item{
+  padding: 20rpx;
+  border-bottom: 2rpx solid #f7f7f7;
+}
+.top-title{
+  font-size: 33rpx;
+}
+.topic-bottem{
+  color: #666;
+  font-size: 30rpx;
+}
+

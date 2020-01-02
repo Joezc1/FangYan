@@ -1,0 +1,75 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button class="user" wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权登录 </button>
+
+    <block wx:else>
+
+      <view class="page-section">
+        <swiper circular class="swiperbox" easing-function="easeOutCubic" skip-hidden-item-layout autoplay>
+          <block wx:for="{{imgarr}}" wx:key="index" wx:item="item">
+            <swiper-item class="swiper-item">
+              <image class="swiper-img" src="{{item.url}}"></image>
+              <view class="swiper-title">
+              <text class="title-text">{{item.title}}</text>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+
+      </view>
+
+      <swiper class="box-grid">
+        <swiper-item class="box-swiper-item">
+          <view class="box-item" wx:for="{{boxs}}" wx:key="index" wx:item="item">
+          <text>{{item.name}}</text>
+        </view>
+        </swiper-item>
+      </swiper>
+
+      <view class="switchContent">
+        <!-- <switch class="switch-main" title="{{title}}" selectedColor="{{selectedColor}}" current="{{current}}"></switch> -->
+        <view class='switch-item {{type == 1?"selectedClass":""}}' bindtap="changeType" data-type="1">推荐</view>
+        <view class='switch-item {{type == 2?"selectedClass":""}}' bindtap="changeType" data-type="2">热榜</view>
+      </view>
+
+      <block wx:if="{{type == 1}}">
+
+        <view wx:for="{{recommend}}" wx:key="index" data-id="{{item.id}}" bindtap="gotoAnswer" class="recommend-item">
+          <view class="recommend-title">{{item.title}}</view>
+          <view class="recommend-avtor">
+            <image class="avtar-img" src="{{item.cover}}"></image>
+            <view class="avtar-name">{{item.nickname}}</view>
+          </view>
+          <view class="recommend-detail">
+            {{item.abstract}}
+          </view>
+          <view class="recommend-bottem">
+            <text class="recommend-agree">{{item.agree}}</text>赞同
+            <text class="recommend-comment">{{item.comment}}</text>评论
+          </view>
+        </view>
+
+        <view class="end-text">到底咯..</view>
+
+      </block>
+
+      <block wx:else>
+        <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="lower">
+          <view wx:for="{{textarr}}" wx:key="index" class="text-item" data-id="{{item.id}}" bindtap="gotoAnswer">
+            <view class='{{index<2||index==2 ?"heat":"text-id"}}'>{{index+1}}</view>
+            <view class="text-title">
+              <view class="title-detail">{{item.title}}</view>
+              <view class="title-heat">{{item.heat}}万热度</view>
+            </view>
+            <image class="text-img" src="{{item.topiccover}}" mode="aspectFill"></image>
+          </view>
+        </scroll-view>
+
+        <view class="end-text">到底咯..</view>
+      </block>
+
+    </block>
+  </view>
+
+</view>

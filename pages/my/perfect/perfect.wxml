@@ -1,0 +1,9 @@
+<!--pages/my/perfect/perfect.wxml-->
+<view class="perfect-main">
+  <view class="cell">
+    <view class="label">手机号:</view>
+  </view>
+  <view class="cell">
+    <view class="label">密码:</view>
+  </view>
+</view>

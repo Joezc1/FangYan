@@ -1,0 +1,34 @@
+<!--pages/follow/follow.wxml-->
+<view>
+  <view class="follow-head">
+    <view class="head-item {{selectedType == 1 ?'selected':''}}" data-type="1" bindtap="changeType">话题</view>
+    <view class="head-item {{selectedType == 2 ?'selected':''}}" data-type="2" bindtap="changeType">用户</view>
+  </view>
+  <view class="follow-body">
+    <block wx:if="{{selectedType == 1}}">
+
+      <view class="topic-item" wx:for="{{topics}}" wx:key="index">
+        <view class="topic-title">
+          {{item.title}}
+        </view>
+        <view class="topic-bottem">
+          <text class="answers">{{item.answers}}</text>个回答
+          <text class="follow">{{item.follow}}</text>人关注
+        </view>
+      </view>
+    
+    </block>
+    <block wx:else>
+      <view wx:for="{{users}}" wx:key="index" class="user-item">
+        <image class="user-avtar" src="{{item.avtar}}"></image>
+        <view class="per">
+          <view class="pername">{{item.name}}</view>
+          <view class="perdetail">{{item.detail}}</view>
+        </view>
+        <button class="btn" wx:if="{{item.type==1}}">已关注</button>
+        <button class="btn" wx:else>+关注</button>
+      </view>
+
+    </block>  
+  </view>
+</view>

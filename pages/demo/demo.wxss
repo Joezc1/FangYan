@@ -1,0 +1,5 @@
+/* /* pages/demo/demo.demo-mazz */
+.demo-main{
+  margin: 0 auto;
+  text-align: center;
+}

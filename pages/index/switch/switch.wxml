@@ -1,0 +1,10 @@
+<!--components/switch/switch.wxml-->
+<view class="switch-content" wx:for="{{title}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+  <view class="switch-item" style="color:{{current}} ==index ? {{selectedColor}}:''" data-current="{{current}}" bindtap="changeType">
+  {{item.name}}
+  </view>
+
+   <!-- <view class="switch-item" style="color:#FF9900" data-current="{{current}}" bindtap="changeType">
+  {{item.name}}
+  </view> -->
+</view>

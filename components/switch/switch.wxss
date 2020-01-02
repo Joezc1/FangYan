@@ -1,0 +1,7 @@
+/* components/switch/switch.wxss */
+.switch-content{
+
+}
+.switch-item{
+  color: #000000;
+}
