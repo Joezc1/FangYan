@@ -1,31 +1,46 @@
 <!--index.wxml-->
-<view class="container">
+  <!-- <view class='mask {{showmask==0?"hide":""}}' catchtouchmove="{{stopScroll}}" style="{{maskheight}}"></view> -->
+
+<view class="ripple" style="{{rippleStyle}}"></view>
+
+<view class="container" bindtouchstart="containerTap">
+
   <view class="userinfo">
-    <button class="user" wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权登录 </button>
+    <button type="primary" class="user" wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权登录 </button>
 
     <block wx:else>
-
+      <view class="searchbox">
+        <image class="search-icon" src="../../static/img/search.png"></image>
+        <input bindinput="inputSearch" placeholder="请输入搜索内容" bindfocus="openSearch" class="search-input"></input>
+        <text class="cancel" bindtap="cancelSearch">取消</text>
+      </view>
+      <block wx:if="{{searchflag}}"> 
+        <view class="search-content">
+            <view class="search-item"  data-id="{{item.id}}" bindtap="gotoAnswer" wx:item="tem" wx:key="{{item.index}}" wx:for="{{searchlist}}" data-id="{{item.id}}">
+                <text class="search-text">{{item.title}}</text>
+            </view>
+        </view>
+      </block>
       <view class="page-section">
         <swiper circular class="swiperbox" easing-function="easeOutCubic" skip-hidden-item-layout autoplay>
           <block wx:for="{{imgarr}}" wx:key="index" wx:item="item">
-            <swiper-item class="swiper-item">
-              <image class="swiper-img" src="{{item.url}}"></image>
+            <swiper-item class="swiper-item" bindtap="gotoNotice" data-id="{{item.id}}">
+              <image class="swiper-img" src="{{item.cover}}"></image>
               <view class="swiper-title">
-              <text class="title-text">{{item.title}}</text>
+                <text class="title-text">{{item.title}}</text>
               </view>
             </swiper-item>
           </block>
         </swiper>
-
       </view>
 
-      <swiper class="box-grid">
+      <!-- <swiper class="box-grid">
         <swiper-item class="box-swiper-item">
           <view class="box-item" wx:for="{{boxs}}" wx:key="index" wx:item="item">
           <text>{{item.name}}</text>
         </view>
         </swiper-item>
-      </swiper>
+      </swiper> -->
 
       <view class="switchContent">
         <!-- <switch class="switch-main" title="{{title}}" selectedColor="{{selectedColor}}" current="{{current}}"></switch> -->
@@ -38,15 +53,17 @@
         <view wx:for="{{recommend}}" wx:key="index" data-id="{{item.id}}" bindtap="gotoAnswer" class="recommend-item">
           <view class="recommend-title">{{item.title}}</view>
           <view class="recommend-avtor">
-            <image class="avtar-img" src="{{item.cover}}"></image>
+            <image class="avtar-img" catchtap="gotoPersonal" data-userid="{{item.userid}}" src="{{item.cover}}"></image>
             <view class="avtar-name">{{item.nickname}}</view>
           </view>
-          <view class="recommend-detail">
+          <!-- <view class="recommend-detail">
             {{item.abstract}}
-          </view>
+          </view> -->
+          <rich-text class="recommend-detail" nodes="{{item.abstract}}"></rich-text>
+
           <view class="recommend-bottem">
-            <text class="recommend-agree">{{item.agree}}</text>赞同
-            <text class="recommend-comment">{{item.comment}}</text>评论
+            <text class="recommend-agree">{{item.brower}}</text>浏览
+            <!-- <text class="recommend-comment">{{item.comment}}</text>评论 -->
           </view>
         </view>
 
@@ -60,7 +77,7 @@
             <view class='{{index<2||index==2 ?"heat":"text-id"}}'>{{index+1}}</view>
             <view class="text-title">
               <view class="title-detail">{{item.title}}</view>
-              <view class="title-heat">{{item.heat}}万热度</view>
+              <view class="title-heat">{{item.heat}}热度</view>
             </view>
             <image class="text-img" src="{{item.topiccover}}" mode="aspectFill"></image>
           </view>

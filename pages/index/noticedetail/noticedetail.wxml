@@ -1,0 +1,12 @@
+<!--pages/index/noticedetail/noticedetail.wxml-->
+<view class="notice-head">
+  <view class="title">{{notice.title}}</view>
+  <view class="head-bottem clearfix">
+    <view class="author">发布者:{{notice.author}}</view>
+    <view class="createtime">{{notice.createtime}}</view>
+  </view>
+</view>
+<view class="notice-content">
+  <video class="video" wx:if="{{notice.video!=null || notice.video!=''}}" src="{{notice.video}}" controls></video>
+  <rich-text class="text" nodes="{{notice.detail}}"></rich-text>
+</view>

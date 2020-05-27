@@ -1,0 +1,15 @@
+/* pages/my/about/about.wxss */
+.aboutbody{
+  padding: 40rpx;
+}
+.cell{
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+.label{
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #f5f5f5;
+  font-size: 32rpx;
+}

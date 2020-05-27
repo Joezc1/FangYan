@@ -1,0 +1,11 @@
+<view class="aboutbody">
+  <view class="cell">
+  <view class="label">项目版本号:</view>
+  <view class="value">1.1.0</view>
+  </view>
+    <view class="cell">
+  <view class="label">简介:</view>
+  <view class="value">该小程序服务于贺州学院全校师生同学，希望能借此搭建一个校园交流论坛，降低老师和同学之间的隔阂，同时提升自己的技能水平，开阔自己的眼界。</view>
+  </view>
+
+</view>

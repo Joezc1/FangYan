@@ -1,1 +1,326 @@
 /* pages/index/answerdetail/answerdetail.wxss */
+
+/* pages/index/answer/answer.wxss */
+@import "../../../common/wxss/index.wxss";
+
+.item-user > image {
+  float: left;
+}
+
+.comment-createtime {
+  float: right;
+  margin-top: 35rpx;
+  font-size: 31rpx;
+  margin-right: 31rpx;
+}
+
+.item-nickname {
+  float: left;
+  line-height: 115rpx;
+  margin-left: 10rpx;
+}
+
+.comment-title {
+  padding: 0 0 20rpx 0;
+  border-bottom: 2rpx solid #55555540;
+}
+
+.comment-list {
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 300rpx;
+}
+
+.list-item {
+  padding: 0 0 20rpx 0;
+  border-bottom: 2rpx solid #55555540;
+}
+
+.item-user > image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.comment-detail {
+  font-size: 33rpx;
+}
+
+.comment-input {
+  padding: 20rpx;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 100rpx;
+  background: #f5f5f5;
+  width: 100%;
+}
+
+.comment-input > input {
+  float: left;
+  width: 75%;
+  background: #fff;
+  height: 100rpx;
+  box-sizing: border-box;
+}
+
+.comment-input > button {
+  float: right;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+}
+
+.answer-content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.content-detail {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.hide {
+  display: none;
+}
+
+.bottem {
+  background: #f7f7f7;
+  width: 100%;
+  position: fixed;
+  height: 100rpx;
+  bottom: 0;
+}
+
+.detail-bottem {
+  margin-bottom: 40rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 23rpx;
+  display: flex;
+  border-bottom: 2rpx solid #55555540;
+}
+
+.answer-title {
+  width: 100%;
+  font-weight: bold;
+  font-size: 42rpx;
+}
+
+.answer-detail {
+  width: 100%;
+  font-size: 35rpx;
+  margin-top: 30rpx;
+}
+
+.answer-amount {
+  width: 100%;
+  font-size: 26rpx;
+  line-height: 70rpx;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.amount-text {
+  font-size: 22rpx;
+  flex: 4;
+}
+
+.answer-btn {
+  flex: 2;
+  float: right;
+  text-align: center;
+}
+
+.amount-btn {
+  font-size: 23rpx;
+  background: blue;
+  color: #fff;
+}
+
+.answer-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  margin-top: 30rpx;
+}
+
+.answer-amount::after {
+  content: "";
+  clear: both;
+  display: block;
+  overflow: hidden;
+  font-size: 0;
+  height: 0;
+}
+
+.btn {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  border: 2rpx solid #f7f7f7;
+  font-size: 36rpx;
+  line-height: 78rpx;
+  height: 88rpx;
+}
+
+.answer-head {
+  padding: 20rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.line {
+  height: 24rpx;
+  background: #f7f7f7;
+  width: 100%;
+}
+
+.avtar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.content-main {
+  margin: 0 auto;
+}
+
+.content-head {
+  border-bottom: 2rpx solid #f7f7f7;
+  width: 100%;
+  padding: 20rpx;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.content-left {
+  display: flex;
+  flex: 1;
+}
+
+.content-right {
+  flex: 1;
+}
+
+.btn {
+  width: 180rpx;
+  font-size: 28rpx;
+  float: right;
+}
+
+.nickname {
+  padding: 20rpx 0 0 10rpx;
+}
+
+.content-body {
+  padding: 20rpx;
+}
+
+.content-all {
+  font-size: 30rpx;
+  line-height: 55rpx;
+  height: 55rpx;
+  margin-left: 26rpx;
+}
+
+.all {
+  font-weight: bold;
+}
+
+.avtor-img {
+  width: 80rpx;
+  height: 80rpx;
+  float: left;
+  border-radius: 50%;
+}
+
+.avtor-name {
+  float: left;
+  font-size: 35rpx;
+  line-height: 80rpx;
+  margin-left: 28rpx;
+}
+
+.avtor::after {
+  content: '';
+  height: 0;
+  display: block;
+  clear: both;
+}
+
+.content-item {
+  padding: 20rpx;
+  border-bottom: 2rpx solid #f7f7f7;
+}
+
+.content-answer {
+  font-size: 33rpx;
+  margin-top: 20rpx;
+}
+
+.content-bottem {
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+
+.bottem-text {
+  font-weight: bold;
+}
+
+.bottem-more {
+  font-size: 38rpx;
+  margin: 0 auto;
+  text-align: center;
+  height: 84rpx;
+  line-height: 94rpx;
+}
+
+.bottom-agree {
+  float: left;
+  height: 100%;
+}
+
+.bottom-follow {
+  float: right;
+  margin: 0 80rpx 0 0;
+}
+
+.bottom-agree-text {
+  float: left;
+  padding: 5rpx 0 0 30rpx;
+}
+
+.bottom-agree-img {
+  float: left;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.bottom-follow-text {
+  font-size: 30rpx;
+}
+
+.bottom-follow-img {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.bottom-box {
+  width: 190rpx;
+  height: 70%;
+  margin: 20rpx;
+  box-sizing: border-box;
+  border-radius: 34rpx;
+  border: 1px solid #555;
+}
+
+.selected {
+  background: blue;
+  color: #fff;
+}
+
+.bottom-follow-box {
+  text-align: center;
+}

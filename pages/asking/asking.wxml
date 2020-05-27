@@ -1,17 +1,23 @@
- <view class="asking-head">
-    <!-- <view class="head-title">标题</view> -->
-    <textarea maxlength="100" placeholder="输入问题并以问号结尾（30字）" class="head-input"></textarea>
-  </view>
+<view class="mask" wx:if="{{isOpen}}"></view>
+
+<view class="asking-head">
+  <!-- <view class="head-title">标题</view> -->
+  <textarea maxlength="100" bindinput="editorTitle" placeholder="输入问题并以问号结尾（30字）" class="head-input"></textarea>
+</view>
 
 <view class="container" style="height:{{editorHeight}}rpx;">
-  
+
   <editor id="editor" class="ql-container" bindinput="editorEvent" placeholder="{{placeholder}}" bindstatuschange="onStatusChange" bindready="onEditorReady">
   </editor>
 </view>
 
 <view class="upload-box" hidden="{{keyboardHeight > 0 ? true : false}}">
-  <i class="iconfont icon-charutupian upbox-img"></i>
-  <text class="uptext">+上传一张封面图片吧</text>
+  <i class="iconfont icon-charutupian upbox-img" bindtap="uploadImg"></i>
+  <text class="uptext">+选择一张封面图片吧(可选)</text>
+</view>
+
+<view wx:if="{{topiccover.length!=0 || topiccover!=''}}" class="topiccover" hidden="{{keyboardHeight > 0 ? true : false}}">
+  <image class="upload-img" src="{{topiccover}}"></image>
 </view>
 
 <view class="toolbar" catchtouchend="format" hidden="{{keyboardHeight > 0 ? false : true}}" style="bottom: {{isIOS ? keyboardHeight : 0}}px">
@@ -26,8 +32,25 @@
   <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
 </view>
 
-<view class="btn-item" hidden="{{keyboardHeight > 0 ? true : false}}">
-  <button class="btn">发布</button>
+<view class="tags" wx:if="{{isOpen}}">
+  <view class="tag-title">至少需要给话题添加一个标签</view>
+   <picker wx:if="{{selectType==1}}" bindchange="bindPickerChange" value="{{index}}" range="{{tagslist}}">
+    <view class="picker">
+      当前选择：{{tagslist[index]}}
+    </view>
+  </picker>
+  <view wx:else class="personal-select">
+    <view class="label">自定义:</view>
+      <input bindinput="bindKeyInput" placeholder="自定义输入"/>
+  </view>
+  <view class="tag-bottom">
+  <button type="primary" size="mini" bindtap="personalSelect">自定义</button>  
+  <button type="primary" size="mini" bindtap="selectOk">选好了</button>
+  </view>
 </view>
 
+<view class="tag-box-item" wx:if="{{tag.length!=0}}" bindtap="openTag" class="">标签:{{tag}}</view>
 
+<view class="btn-item" hidden="{{keyboardHeight > 0 ? true : false}}">
+  <button class="btn" bindtap="newtopic">发布</button>
+</view>

@@ -28,7 +28,7 @@ margin-left: 30rpx;
 }
 .per{
   float: left;
-  margin-left: 30rpx;
+  padding: 20rpx 20rpx 0 0;
 }
 .pername{
 font-weight: bold;

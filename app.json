@@ -7,10 +7,15 @@
     "pages/follow/follow",
     "pages/my/my",
     "components/switch/switch",
-    "pages/index/answer/answer",
+    "pages/index/topic/topic",
     "pages/index/answerdetail/answerdetail",
     "pages/my/personal/personal",
-    "pages/my/perfect/perfect"
+    "pages/my/perfect/perfect",
+    "pages/index/noticedetail/noticedetail",
+    "pages/asking/reply/reply",
+    "pages/my/complete/complete",
+    "pages/my/about/about",
+    "pages/my/help/help"
   ],
   "permission": {
     "scope.userLocation": {
@@ -20,7 +25,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#f7f7f7",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

@@ -1,0 +1,63 @@
+<!--pages/index/answer/answer.wxml-->
+<view class="ripple" style="{{rippleStyle}}"></view>
+<view class="answer-content" bindtouchstart="containerTap">
+
+  <view class="answer-head">
+    <view class="answer-title">{{detail.title}}</view>
+    <rich-text class="answer-detail" nodes="{{detail.topic}}"></rich-text>
+
+    <view class="answer-amount">
+      <view class="amount-text">
+        <text>{{detail.follow}}</text>人关注
+        <!-- <text>{{detail.comment}}</text>条评论 -->
+        <text>{{detail.brower}}</text>次浏览
+      </view>
+      <view wx:if="{{userid!=detail.userid}}" class="answer-btn">
+        <button wx:if="{{isfollow==true}}" class="selected-btn" bindtap="cancelfollow">已关注</button>
+        <button wx:else class="amount-btn" bindtap="follow">+关注问题</button>
+      </view>
+    </view>
+    <view class="answer-section">
+      <!-- <view class="btn">邀请回答</view> -->
+      <view class="btn" bindtap="gotoReply" data-topicid="{{detail.id}}">写回答</view>
+    </view>
+
+  </view>
+
+  <view class="line"></view>
+
+  <view class="content-main">
+    <view class="content-head">
+      <view class="content-all">
+        全部
+        <!-- <text class="all">189</text> -->
+      </view>
+    </view>
+
+    <view class="content-body">
+      <view class="content-item" wx:for="{{answers}}" wx:item="item" bindtap="gotoAnswer" data-answerid="{{item.id}}" wx:key="index">
+        <view class="avtor">
+          <image class="avtor-img" src="{{item.cover}}"></image>
+          <view class="avtor-name">{{item.nickname}}</view>
+        </view>
+
+        <view class="content-answer">
+         
+    <rich-text nodes=" {{item.abstract}}"></rich-text>
+
+        </view>
+
+        <view class="content-bottem">
+          <text class="bottem-text">{{item.agree}}</text>赞同
+          <text class="bottem-text">{{item.thanks}}</text>感谢
+          <text class="bottem-text">{{item.comment}}</text>评论
+          <text class="bottem-text">{{item.createtime}}</text>前
+        </view>
+      </view>
+
+      <view class="bottem-more">别拉啦，没了</view>
+
+    </view>
+  </view>
+
+</view>

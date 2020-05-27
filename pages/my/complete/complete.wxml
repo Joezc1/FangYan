@@ -1,0 +1,27 @@
+<view class="complete-main">
+   <!-- <view class="cell clearfix">
+    <view class="label">昵称:</view>
+    <input placeholder="请输入昵称" bindinput="changeNickname" value="{{userinfo.nickname}}"/>
+  </view> -->
+  <view class="cell">
+    <!-- <view class="label">性别</view> -->
+      <picker bindchange="bindPickerSex" value="{{userinfo.sex}}" range="{{sex}}">
+    <view class="picker">
+      性别:{{sex[userinfo.sex]}}
+    </view>
+  </picker>
+  </view>
+  <view class="cell">
+    <picker mode="date" start="1970-09-01" end="2020-09-01" bindchange="bindDateChange">
+       生日：{{userinfo.birthday}}
+    </picker>
+  </view>
+  <view class="cell">
+    <picker bindchange="bindPickerGrade" value="{{gradeIndex}}" range="{{grade}}">
+      年级：{{grade[gradeIndex]}}
+    </picker>
+  </view>
+  <view class="cell-btn">
+    <button type="primary" bindtap="saveUserinfo">修改</button>
+  </view>
+</view>

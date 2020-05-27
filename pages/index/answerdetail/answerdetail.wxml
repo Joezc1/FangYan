@@ -1,6 +1,79 @@
 <!--pages/index/answerdetail/answerdetail.wxml-->
-<view>
-  <view class="detail-head"></view>
-  <view classs="detail-content"></view>
-  <view class="detail-bottem"></view>
+<view class="ripple" style="{{rippleStyle}}"></view>
+<view bindtouchstart="containerTap">
+  <view class="answer-head">
+    <view class="answer-title">{{topic.title}}</view>
+    <rich-text class="answer-detail" nodes="{{topic.abstract}}"></rich-text>
+
+
+    <view class="answer-amount">
+      <view class="amount-text">
+        <text>{{topic.follow}}</text>人关注
+        <text>{{topic.comment}}</text>条评论
+        <text>{{topic.brower}}</text>次浏览
+      </view>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view classs="detail-content">
+    <view class="content-head">
+      <view class="content-left" catchtap="gotoPersonal" data-userid="{{userinfo.userid}}">
+        <image class="avtar" src="{{userinfo.cover}}"></image>
+        <view class="nickname">{{userinfo.nickname}}</view>
+      </view>
+    </view>
+    <view class="content-detail">
+      <rich-text class="content-text" nodes="{{answer.answer}}"></rich-text>
+    </view>
+  </view>
+  <view class="detail-bottem">
+    <view class="agree">{{answer.agree}}赞同数</view>
+    <view class="comment">{{answer.comments}}评论数</view>
+    <view class="thanks">{{answer.thanks}}感谢数</view>
+    <view class="time">{{answer.createtime}}创建时间</view>
+  </view>
+
+  <!-- 评论列表 -->
+  <view class="comment-list">
+    <view class="comment-title">最新评论</view>
+
+    <view class="list-item" wx:for="{{commentList}}" wx:item="item" wx:index="index" wx:key="index">
+      <view class="item-user clearfix">
+        <image src="{{item.userinfo.cover}}" bindtap="gotoPersonal" data-userid="{{item.userid}}"></image>
+        <view class="item-nickname">{{item.userinfo.nickname}}</view>
+        <view class="comment-createtime">{{item.createtime}}</view>
+      </view>
+      <view class="comment-detail">{{item.detail}}</view>
+    </view>
+  </view>
+
+  <!-- 发表输入框 -->
+  <view class="comment-input clearfix">
+    <input placeholder="写下一句评论.." value="{{commentValue}}" bindinput="inputComment"></input>
+    <button size="mini" bindtap="saveComment" type="primary">发表</button>
+  </view>
+
+  <view class="bottem clearfix">
+    <view class="bottom-agree {{userinfo.userid==userid?'hide':''}}">
+      <view wx:if="{{isagree}}" bindtap="cancelAgree" class="bottom-box selected">
+        <view class="bottom-agree-text">已赞同</view>
+      </view>
+      <view wx:else class="bottom-box" bindtap="agreeAnswer">
+        <view class="bottom-agree-text">赞同</view>
+        <image class="bottom-agree-img" src="/static/img/szangtong.png"></image>
+      </view>
+    </view>
+    <view class="bottom-follow {{userinfo.userid==userid?'hide':''}}">
+      <view wx:if="{{isfollow}}" class="bottom-follow-box" bindtap="cancelFollow">
+        <image class="bottom-follow-img" src="/static/img/sxin.png"></image>
+        <view class="bottom-follow-text">已关注</view>
+      </view>
+      <view wx:else bindtap="followAnswer" class="bottom-follow-box">
+        <image class="bottom-follow-img" src="/static/img/xin.png"></image>
+        <view class="bottom-follow-text">关注</view>
+      </view>
+
+    </view>
+  </view>
+
 </view>

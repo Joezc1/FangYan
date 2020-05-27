@@ -1,19 +1,91 @@
 <!--pages/my/personal/personal.wxml-->
 <view>
-  <view class="personal">
+  <view class="personal-content">
+    <view class="head-back"></view>
 
-  <view class="cell">
-    <view class="label">头像</view>
-    <image class="avtart" src="{{userInfo.avatarUrl}}"></image>
-  </view>
-  <view class="cell">
-    <view class="label">昵称</view>
-    <view class="nickname">{{userInfo.nickName}}</view>
-  </view>
-   <view class="cell">
-    <view class="label">地址</view>
-    <view class="address">{{userInfo.country}}{{userInfo.province}}{{userInfo.city}}</view>
-  </view>
- 
+    <view class="body-top">
+      <view class="content-head">
+        <view class="head-box">
+          <view class="item-one clearfix">
+            <image class="one-img" src="{{userInfo.cover}}"></image>
+            <!-- <view class="one-right"> -->
+            <view class="one-right" wx:if="{{userInfo.userid != myuserid}}">
+            <button wx:if="{{isfollow}}" class="item-btn" bindtap="cancelUser">已关注</button>
+            <button wx:else class="item-btn" bindtap="followUser">+关注</button>
+            </view>
+          </view>
+          <view class="item-two">
+            {{userInfo.nickname}}
+          </view>
+          <view class="item-three clearfix">
+            <view class="left">
+              <text class="three-left">{{userInfo.followed}}</text>
+              <text class="three-right">关注他的人</text>
+            </view>
+            <view class="right">
+              <text class="three-left">{{userInfo.follow}}</text>
+              <text class="three-right">他关注的人</text>
+            </view>
+          </view>
+          <view class="item-four">
+            <view class="four-left"></view>
+            <!-- <view class="four-right">8690赞同.7658感谢.3434收藏</view> -->
+          </view>
+        </view>
+      </view>
+
+      <view class="content-body">
+        <view class="body-head">
+          <view class="body-head-box clearfix">
+            <view class="body-head-box-item">
+              话题
+            </view>
+            <!-- <view class="body-head-box-item box-right">
+              回答
+            </view> -->
+          </view>
+        </view>
+
+        <view class="count clearfix">
+          <view class="count-left">
+            全部
+          </view>
+          <!-- <view class="count-right">
+            按时间排序
+          </view> -->
+        </view>
+
+        <view class="body-content">
+          <block wx:if="{{selected == 1}}">
+            <view class="answer-content">
+               <view class="answer-item" bindtap="gotoTopic" data-id="{{item.id}}" wx:for="{{topiclist}}" wx-item="item" wx-index="index">
+                <view class="answer-title">{{item.title}}</view>
+                <view class="answer">{{item.abstract}}</view>
+                <view class="answer-bottem">
+                  <text>{{item.agree}}</text>赞同.
+                  <text>{{item.createtime}}</text>天前
+                </view>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="answer-content">
+              <view class="answer-item" wx:for="{{answerlist}}" wx-item="item" wx-index="index">
+                <view class="answer-title">{{item.title}}</view>
+                <view class="answer">{{item.answer}}</view>
+                <view class="answer-bottem">
+                  <text>{{item.agree}}</text>赞同.
+                  <text>{{item.agree}}</text>感谢.
+                  <text>{{item.agree}}</text>天前
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+
+      </view>
+
+
+    </view>
   </view>
 </view>

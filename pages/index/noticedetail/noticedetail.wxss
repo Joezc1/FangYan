@@ -1,0 +1,32 @@
+/* pages/index/noticedetail/noticedetail.wxss */
+@import '../../../common/wxss/index.wxss';
+.notice-head{
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.video{
+  width: 100%;
+  height: 338rpx;
+}
+.title{
+  font-weight: bold;
+}
+.head-bottem{
+  margin-top: 40rpx;
+  box-sizing: border-box;
+}
+.notice-content{
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.author{
+  float: left;
+  font-size: 26rpx;
+}
+.createtime{
+  float: right;
+  font-size: 26rpx;
+}
+.text{
+  word-break: break-all;
+}

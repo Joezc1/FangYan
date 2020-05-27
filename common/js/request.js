@@ -1,17 +1,21 @@
+// const baseUrl = 'https://xiaofengchei.top:8399/wx/api'
+
 const baseUrl = 'http://39.106.159.120:8080/wx/api'
+// const baseUrl = 'http://localhost:8080/wx/api'
+// let header = { 'content-type': 'application/json' }
 
 /**
  * 供外部post请求调用
  */
-function post(url, params, onStart, onSuccess, onFailed) {
-  request(url, params, "POST", onStart, onSuccess, onFailed);
+function post(url, params,header, onStart, onSuccess, onFailed) {
+  request(url, params, "POST", { 'content-type': 'application/json' }||header, onStart, onSuccess, onFailed);
 }
 
 /**
  * 供外部get请求调用
  */
-function get(url, params, onStart, onSuccess, onFailed) {
-  request(url, params, "GET", onStart, onSuccess, onFailed);
+function get(url, params,header, onStart, onSuccess, onFailed) {
+  request(url, params, "GET", { 'content-type': 'application/json' } || header, onStart, onSuccess, onFailed);
 }
 
 /**
@@ -23,17 +27,17 @@ function get(url, params, onStart, onSuccess, onFailed) {
  * @onSuccess 成功回调
  * @onFailed  失败回调
  */
-function request(url, params, method, onStart, onSuccess, onFailed) {
+function request(url, params, method,header, onStart, onSuccess, onFailed) {
   onStart(); //request start
   wx.request({
-    url: url,
+    url: `${baseUrl}${url}`,
     data: dealParams(params),
     method: method,
-    header: { 'content-type': 'application/json' },
+    header: header,
     success: function (res) {
       if (res.data) {
         /** start 根据需求 接口的返回状态码进行处理 */
-        if (res.data.error_code == 0) {
+        if (res.data.success) {
           onSuccess(res.data); //request success
         } else {
           onFailed(res.data.msg); //request failed

@@ -1,3 +1,6 @@
+const myaxios = require("../../common/js/request.js")
+let header = { 'content-type': 'application/json' }
+
 // pages/follow/follow.js
 Page({
 
@@ -5,23 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    topics:[
-      {
-        title: '普通本科，正在学习java大数据，想请教各位如何才能找到一份好的工作',
-        answers:5,
-        follow: 8
-      },
-      {
-        title: '普通本科，正在学习java大数据，想请教各位如何才能找到一份好的工作',
-        answers: 5,
-        follow: 8
-      },
-      {
-        title: '普通本科，正在学习java大数据，想请教各位如何才能找到一份好的工作',
-        answers: 5,
-        follow: 8
-      }
-    ],
+    topics:[],
     users:[
       {
         name: '周周',
@@ -62,6 +49,19 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  // 获取用户关注用户并判断该用户是否已经关注
+  getUserlist: function () {
+    let that = this
+    let userid = wx.getStorageSync('openid')
+    myaxios.postRequest(`/follow/user/list/${userid}`, {}, header, (start) => { }, (res) => {
+      console.log("获取用户关注用户")
+      console.log(res)
+      let list = res.list
+      that.setData({
+        users: list
+      })
+    }, (err) => { })
+  },
   onLoad: function (options) {
 
   },
@@ -81,7 +81,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let list =JSON.parse(wx.getStorageSync('followlist'))
+    this.setData({
+      topics: list
+    })
+    this.getUserlist()
   },
 
   /**
@@ -90,7 +94,14 @@ Page({
   onHide: function () {
 
   },
-
+  gotoTopic: function(e){
+    wx.navigateTo({
+      url: `../index/topic/topic?id=${e.currentTarget.dataset.id}`,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
   /**
    * 生命周期函数--监听页面卸载
    */

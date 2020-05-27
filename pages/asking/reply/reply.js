@@ -1,61 +1,28 @@
-const myaxios = require('../../common/js/request.js')
-const app = getApp()
+const myaxios = require('../../../common/js/request.js')
+let header = { 'content-type': 'application/json' }
+
 
 Page({
   data: {
-    // 用来控制是否自定义标签
-    selectType: 1,
-    // 行业数组
-    tagslist: [
-      '硬件开发',
-      '数据库管理',
-      '前端开发',
-      '后端开发',
-      '算法设计',
-      '软件测试',
-      'UI设计',
-      '动画设计',
-      '运维',
-      '农林牧渔',
-      '医药卫生',
-      '建筑建材',
-      '冶金矿产',
-      '石油化工',
-      '水利水电',
-      '交通运输',
-      '信息产业',
-      '机械机电',
-      '轻工食品',
-      '服装纺织',
-      '专业服务',
-      '安全防护',
-      '环保绿化',
-      '旅游休闲',
-      '电子信息',
-    ],
-    index: 0,
-    // 是否打开弹窗
-    isOpen:false,
-    topiccover: '',
+    topicid: '',
     editorText: '',
     formats: {},
     readOnly: false,
-    placeholder: '对问题的补充说明，可以更快获得解答',
+    placeholder: '对问题的补充说明，可以更快获得解答（请输入最少10个字）',
     editorHeight: 350,
     keyboardHeight: 0,
     isIOS: false,
-    title: '',
-    // tagflag控制选择tag弹窗
-    tagflag:false,
-    // tag标签
-    tag: ''
   },
   readOnlyChange() {
     this.setData({
       readOnly: !this.data.readOnly
     })
   },
-  onLoad() {
+  onLoad(e) {
+    this.setData({
+      topicid:e.id
+    })
+    console.log(this.data.topicid)
     const platform = wx.getSystemInfoSync().platform
     const isIOS = platform === 'ios'
     this.setData({
@@ -81,37 +48,11 @@ Page({
       }, duration)
     })
   },
-  bindKeyInput: function (e) {
-    this.setData({
-      tag: e.detail.value
-    })
-  },
-  // 选择结束
-  selectOk(){
-    this.setData({
-      isOpen:false,
-      selectType:1
-    })
-  },
-  // 自定义选择
-  personalSelect(){
-    this.setData({
-      selectType:2
-    })
-  },
   // 绑定标题
   editorTitle(e) {
     console.log(e)
     this.setData({
       title: e.detail.value
-    })
-  },
-  // tags的picker选择器
-  bindPickerChange(e){
-    let value = this.data.tagslist[e.detail.value]
-    this.setData({
-      index: e.detail.value,
-      tag: value
     })
   },
   // 更新定键盘高度
@@ -140,7 +81,7 @@ Page({
   },
   onEditorReady() {
     const that = this
-    wx.createSelectorQuery().select('#editor').context(function(res) {
+    wx.createSelectorQuery().select('#editor').context(function (res) {
       that.editorCtx = res.context
     }).exec()
   },
@@ -187,95 +128,45 @@ Page({
       }
     })
   },
-  // 新增一个话题
-  newtopic() {
-    let that=this
-    if (this.data.topiccover.length==0){
-      wx.showToast({
-        title: '请上传封面',
-      })
-      return false
-    }
-    if(this.data.tag.length==0){
-      this.setData({
-        isOpen:true
-      })
-      return false
-    }
-    let reqData = {
-      follow: 0,
-      comment: 0,
-      brower: 0,
-      agree: 0,
-      heat: 0,
-    }
-    if (this.data.editorText.length == '' || this.data.editorText.length == null){
-      wx.showToast({
-        title: '请输入话题详情',
-        icon: 'none'
-      })
-      return false
-    }
-    reqData.topic = this.data.editorText
-    reqData.title = this.data.title
-    reqData.userid = wx.getStorageSync('openid')
-    reqData.topiccover = this.data.topiccover
-    reqData.updatetime = '0000-00-00 00:00:00'
-    reqData.tag = this.data.tag
-    console.log("新建话题")
-    console.log(reqData)
-    wx.request({
-      url: `${myaxios.baseUrl}/save/topic`,
-      data: reqData,
-      header: {},
-      method: 'POST',
-      dataType: 'json',
-      responseType: 'text',
-      success: function(res) {
-        console.log("新建话题")
-        console.log(res)
-        that.setData({
-          topic: '',
-          title: '',
-          editorTitle: '',
-          topiccover: '',
-          tag: '',
-          index: 0
-        })
-        wx.showToast({
-          title: '发布成功',
-        })
-      },
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
   onStatusChange(e) {
     const formats = e.detail
     this.setData({
       formats
     })
   },
-  openTag(){
-    this.setData({
-      isOpen:true
-    })
-  },
   insertDivider() {
     this.editorCtx.insertDivider({
-      success: function() {
+      success: function () {
         console.log('insert divider success')
       }
     })
   },
   clear() {
     this.editorCtx.clear({
-      success: function(res) {
+      success: function (res) {
         console.log("clear success")
       }
     })
   },
-  editorEvent: function(e) {
+  // 创建一个回答
+  newReply:function(e){
+    let data = {
+      answer:this.data.editorText,
+      agree: 0,
+      thanks: 0,
+      comments: 0,
+      topicid:this.data.topicid,
+      userid:wx.getStorageSync('openid')
+    }
+    myaxios.postRequest('/save/answer',data,header,(start)=>{},(res)=>{
+      console.log('新建一个回答')
+      console.log('新建成功')
+      wx.showToast({
+        title: `${res.msg}`,
+      })
+    },(err)=>{})
+  },
+  editorEvent: function (e) {
     this.setData({
       editorText: e.detail.html
     })
@@ -341,7 +232,7 @@ Page({
                 role: 'god'
               },
               width: '80%',
-              success: function() {
+              success: function () {
                 console.log('insert image success')
                 console.log(that.editorText)
               }
